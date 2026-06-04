@@ -1,6 +1,6 @@
 // Shared prompt insertion module for supported AI chat sites.
 (function () {
-  if (window.PromptlyInjection) {
+  if (window.PromptStowInjection) {
     return;
   }
 
@@ -144,7 +144,7 @@
           }
         }
       } catch (error) {
-        console.warn('Promptly skipped invalid selector:', selector, error);
+        console.warn('PromptStow skipped invalid selector:', selector, error);
       }
     }
 
@@ -547,11 +547,11 @@
       throw new Error('Target element is not editable');
     }
 
-    console.log('Promptly inserted prompt:', options.title || '(untitled)', strategy.host);
+    console.log('PromptStow inserted prompt:', options.title || '(untitled)', strategy.host);
     return { success: true, message: 'Prompt inserted successfully' };
   }
 
-  window.PromptlyInjection = {
+  window.PromptStowInjection = {
     findElement,
     getCaretRect,
     getCurrentStrategy,
@@ -565,6 +565,6 @@
 
   // Backward-compatible alias for older callers.
   window.injectPromptAdvanced = (promptText, promptTitle) => (
-    window.PromptlyInjection.insertPrompt(promptText, { title: promptTitle })
+    window.PromptStowInjection.insertPrompt(promptText, { title: promptTitle })
   );
 })();

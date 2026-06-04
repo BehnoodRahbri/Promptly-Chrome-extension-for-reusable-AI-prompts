@@ -1,15 +1,15 @@
-// Inline slash-command trigger for Promptly.
+// Inline slash-command trigger for PromptStow.
 (function () {
-  if (window.__promptlySlash) {
+  if (window.__promptstowSlash) {
     return;
   }
 
-  window.__promptlySlash = true;
+  window.__promptstowSlash = true;
 
-  const Injection = window.PromptlyInjection;
-  const Fuzzy = window.PromptlyFuzzy;
-  const Parser = window.PromptlySlashParse;
-  const Template = window.PromptlyTemplate;
+  const Injection = window.PromptStowInjection;
+  const Fuzzy = window.PromptStowFuzzy;
+  const Parser = window.PromptStowSlashParse;
+  const Template = window.PromptStowTemplate;
 
   const DEFAULT_SETTINGS = {
     enabled: true,
@@ -38,7 +38,7 @@
         }
 
         if (!response) {
-          reject(new Error('No response from Promptly background'));
+          reject(new Error('No response from PromptStow background'));
           return;
         }
 
@@ -302,7 +302,7 @@
         event.preventDefault();
         activeIndex = Number(button.getAttribute('data-index'));
         acceptActivePrompt().catch((error) => {
-          console.error('Promptly slash accept failed:', error);
+          console.error('PromptStow slash accept failed:', error);
           hide();
         });
       });
@@ -343,7 +343,7 @@
         values[spec.name] = form.elements[spec.name].value;
       });
       insertPromptText(prompt, Template.fillTemplate(prompt.text, values)).catch((error) => {
-        console.error('Promptly variable insert failed:', error);
+        console.error('PromptStow variable insert failed:', error);
         hide();
       });
     });
@@ -373,7 +373,7 @@
       prompt.usageCount = Number(prompt.usageCount || 0) + 1;
       prompt.lastUsed = new Date().toISOString();
     } catch (error) {
-      console.warn('Promptly usage tracking failed:', error);
+      console.warn('PromptStow usage tracking failed:', error);
     }
   }
 
@@ -436,7 +436,7 @@
     }
 
     updateForTarget(event.target).catch((error) => {
-      console.warn('Promptly slash update failed:', error);
+      console.warn('PromptStow slash update failed:', error);
       hide();
     });
   }, true);
@@ -448,7 +448,7 @@
   document.addEventListener('compositionend', (event) => {
     composing = false;
     updateForTarget(event.target).catch((error) => {
-      console.warn('Promptly slash update failed after composition:', error);
+      console.warn('PromptStow slash update failed after composition:', error);
       hide();
     });
   }, true);
@@ -491,7 +491,7 @@
       event.preventDefault();
       event.stopImmediatePropagation();
       acceptActivePrompt().catch((error) => {
-        console.error('Promptly slash accept failed:', error);
+        console.error('PromptStow slash accept failed:', error);
         hide();
       });
     }

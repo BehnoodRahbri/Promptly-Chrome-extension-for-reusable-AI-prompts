@@ -1,4 +1,4 @@
-# Promptly Manual Integration Checklist
+# PromptStow Manual Integration Checklist
 
 Load the project root as an unpacked extension in Chrome before running these checks.
 

@@ -23,7 +23,7 @@ for (const key of requiredTopLevelKeys) {
 }
 
 if (manifest.manifest_version !== 3) {
-  throw new Error('Promptly must stay on Manifest V3');
+  throw new Error('PromptStow must stay on Manifest V3');
 }
 
 if (manifest.permissions.includes('tabs')) {

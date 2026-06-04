@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Promptly",
+  "name": "PromptStow",
   "version": "1.1.0",
   "description": "Save and reuse AI prompts locally in your browser with ease",
   
@@ -28,7 +28,7 @@
 
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Promptly"
+    "default_title": "PromptStow"
   },
 
   "commands": {

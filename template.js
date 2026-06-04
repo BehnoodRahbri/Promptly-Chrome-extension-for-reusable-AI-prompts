@@ -49,7 +49,7 @@
   };
 
   if (typeof globalThis !== 'undefined') {
-    globalThis.PromptlyTemplate = api;
+    globalThis.PromptStowTemplate = api;
   }
 
   if (typeof module !== 'undefined' && module.exports) {

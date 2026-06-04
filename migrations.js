@@ -1,4 +1,4 @@
-// Shared schema migration helpers for Promptly.
+// Shared schema migration helpers for PromptStow.
 (function () {
   const CURRENT_SCHEMA_VERSION = 5;
   const ROOT_FOLDER_ID = 'root';
@@ -184,7 +184,7 @@
   };
 
   if (typeof globalThis !== 'undefined') {
-    globalThis.PromptlyMigrations = api;
+    globalThis.PromptStowMigrations = api;
   }
 
   if (typeof module !== 'undefined' && module.exports) {

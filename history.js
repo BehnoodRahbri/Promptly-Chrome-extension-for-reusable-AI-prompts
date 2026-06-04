@@ -110,7 +110,7 @@
   };
 
   if (typeof globalThis !== 'undefined') {
-    globalThis.PromptlyHistory = api;
+    globalThis.PromptStowHistory = api;
   }
 
   if (typeof module !== 'undefined' && module.exports) {

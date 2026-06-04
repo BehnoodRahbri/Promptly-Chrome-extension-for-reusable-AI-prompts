@@ -1,5 +1,5 @@
 // Content script bridge for prompt insertion requests.
-console.log('Promptly content script loaded on:', window.location.hostname);
+console.log('PromptStow content script loaded on:', window.location.hostname);
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type !== 'INSERT_PROMPT') {
@@ -8,11 +8,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
   (async () => {
     try {
-      if (!window.PromptlyInjection || typeof window.PromptlyInjection.insertPrompt !== 'function') {
-        throw new Error('Promptly injection module is not available');
+      if (!window.PromptStowInjection || typeof window.PromptStowInjection.insertPrompt !== 'function') {
+        throw new Error('PromptStow injection module is not available');
       }
 
-      const result = await window.PromptlyInjection.insertPrompt(
+      const result = await window.PromptStowInjection.insertPrompt(
         message.payload.text,
         { title: message.payload.title }
       );

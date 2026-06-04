@@ -41,7 +41,7 @@
   };
 
   if (typeof globalThis !== 'undefined') {
-    globalThis.PromptlySlashParse = api;
+    globalThis.PromptStowSlashParse = api;
   }
 
   if (typeof module !== 'undefined' && module.exports) {

@@ -1,4 +1,4 @@
-// Popup script for Promptly.
+// Popup script for PromptStow.
 const ROOT_FOLDER_ID = 'root';
 const SUPPORTED_SITE_HOSTS = [
   'chatgpt.com',
@@ -119,7 +119,7 @@ function mergeSettings(settings) {
 }
 
 function t(key, vars) {
-  return window.PromptlyI18n.t(key, vars);
+  return window.PromptStowI18n.t(key, vars);
 }
 
 function sendMessage(message) {
@@ -266,8 +266,8 @@ function handleGlobalKeys(event) {
 
 function applySettings() {
   document.body.dataset.theme = state.settings.theme || 'auto';
-  window.PromptlyI18n.setLocale(state.settings.locale || 'en');
-  window.PromptlyI18n.applyI18n(document);
+  window.PromptStowI18n.setLocale(state.settings.locale || 'en');
+  window.PromptStowI18n.applyI18n(document);
 
   dom.themeSelect.value = state.settings.theme || 'auto';
   dom.localeSelect.value = state.settings.locale || 'en';
@@ -399,7 +399,7 @@ function refreshPromptList() {
   });
 
   if (query) {
-    list = window.PromptlyFuzzy.fuzzyFilter(query, list, { limit: list.length });
+    list = window.PromptStowFuzzy.fuzzyFilter(query, list, { limit: list.length });
   }
 
   state.displayPrompts = sortPrompts(list);
@@ -642,7 +642,7 @@ async function insertPrompt(promptId) {
     const activeTabUrl = activeTab.url || '';
     const isSupported = SUPPORTED_SITE_HOSTS.some((host) => activeTabUrl.includes(host));
     if (!isSupported && !activeTabUrl.startsWith('file:')) {
-      console.warn('Promptly is inserting into an unlisted host:', activeTabUrl);
+      console.warn('PromptStow is inserting into an unlisted host:', activeTabUrl);
     }
 
     await chrome.scripting.executeScript({
@@ -653,11 +653,11 @@ async function insertPrompt(promptId) {
     const results = await chrome.scripting.executeScript({
       target: { tabId: activeTab.id },
       func: (text, title) => {
-        if (!window.PromptlyInjection || typeof window.PromptlyInjection.insertPrompt !== 'function') {
-          throw new Error('Promptly injection module is not available');
+        if (!window.PromptStowInjection || typeof window.PromptStowInjection.insertPrompt !== 'function') {
+          throw new Error('PromptStow injection module is not available');
         }
 
-        return window.PromptlyInjection.insertPrompt(text, { title });
+        return window.PromptStowInjection.insertPrompt(text, { title });
       },
       args: [promptText, promptToUse.title]
     });
@@ -704,7 +704,7 @@ async function copyPrompt(promptId) {
 }
 
 async function resolvePromptText(promptToResolve) {
-  const specs = window.PromptlyTemplate.extractVariableSpecs(promptToResolve.text);
+  const specs = window.PromptStowTemplate.extractVariableSpecs(promptToResolve.text);
   if (!specs.length) {
     return promptToResolve.text;
   }
@@ -714,7 +714,7 @@ async function resolvePromptText(promptToResolve) {
     return null;
   }
 
-  return window.PromptlyTemplate.fillTemplate(promptToResolve.text, values);
+  return window.PromptStowTemplate.fillTemplate(promptToResolve.text, values);
 }
 
 async function fallbackCopy(text, showManualOnFailure = true) {
@@ -748,7 +748,7 @@ async function trackUsage(promptId) {
   try {
     await mutateData({ type: 'TRACK_PROMPT_USAGE', promptId }, false);
   } catch (error) {
-    console.warn('Promptly usage tracking failed:', error);
+    console.warn('PromptStow usage tracking failed:', error);
   }
 }
 
@@ -882,7 +882,7 @@ function showHistoryModal(promptId) {
           const snapshot = history[index];
           diffBox.hidden = !diffBox.hidden;
           if (!diffBox.hidden && !diffBox.innerHTML) {
-            diffBox.innerHTML = window.PromptlyHistory
+            diffBox.innerHTML = window.PromptStowHistory
               .diffLines(snapshot.text, promptWithHistory.text)
               .map((line) => `<div class="diff-line ${line.type}">${escapeHtml(prefixDiff(line.type, line.line))}</div>`)
               .join('');

@@ -1,14 +1,14 @@
-# Promptly
+# PromptStow
 
 ![CI](https://img.shields.io/badge/CI-Vitest%20%2B%20ESLint%20%2B%20manifest%20check-2563eb)
 
-Promptly is a Chrome extension for saving, searching, copying, and inserting reusable AI prompts directly into supported chat sites. Prompts are stored locally with Chrome extension storage.
+PromptStow is a Chrome extension for saving, searching, copying, and inserting reusable AI prompts directly into supported chat sites. Prompts are stored locally with Chrome extension storage.
 
-![Promptly popup screenshot](docs/screenshots/popup.png)
+![PromptStow popup screenshot](docs/screenshots/popup.png)
 
 ## Download And Install
 
-Promptly is currently installed as an unpacked Chrome extension.
+PromptStow is currently installed as an unpacked Chrome extension.
 
 1. Open this GitHub repository in your browser.
 2. Click the green `Code` button.
@@ -17,10 +17,10 @@ Promptly is currently installed as an unpacked Chrome extension.
 5. Open Chrome and go to `chrome://extensions`.
 6. Enable `Developer mode` in the top-right corner.
 7. Click `Load unpacked`.
-8. Select the unzipped Promptly folder that contains `manifest.json`.
-9. Pin Promptly from the Chrome extensions menu.
+8. Select the unzipped PromptStow folder that contains `manifest.json`.
+9. Pin PromptStow from the Chrome extensions menu.
 
-To update Promptly later, download the newest ZIP, unzip it, replace the old folder, then return to `chrome://extensions` and click the extension's reload button.
+To update PromptStow later, download the newest ZIP, unzip it, replace the old folder, then return to `chrome://extensions` and click the extension's reload button.
 
 ## Features
 
@@ -49,7 +49,7 @@ To update Promptly later, download the newest ZIP, unzip it, replace the old fol
 
 ## Permissions
 
-Promptly uses:
+PromptStow uses:
 
 - `activeTab` and `scripting` to insert a selected prompt into the current tab after user action.
 - `storage` to keep prompts locally.
@@ -60,4 +60,4 @@ Host access is limited to the supported AI chat domains listed above.
 
 ## Privacy
 
-Promptly stores prompt data locally in the browser. Settings sync is opt-in and only stores small preferences in Chrome sync; prompt bodies and history remain local.
+PromptStow stores prompt data locally in the browser. Settings sync is opt-in and only stores small preferences in Chrome sync; prompt bodies and history remain local.

@@ -3,7 +3,7 @@ const { extractSyncSettings, SETTINGS_SYNC_KEY, STORAGE_KEY } = require('../stor
 describe('storage helpers', () => {
   it('exports stable storage keys', () => {
     expect(STORAGE_KEY).toBe('promptSaverData');
-    expect(SETTINGS_SYNC_KEY).toBe('promptlySettingsSync');
+    expect(SETTINGS_SYNC_KEY).toBe('promptstowSettingsSync');
   });
 
   it('extracts only small settings-sync payload fields', () => {

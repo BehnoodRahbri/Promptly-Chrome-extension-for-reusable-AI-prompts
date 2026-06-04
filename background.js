@@ -1,15 +1,15 @@
-// Background Service Worker for Promptly.
+// Background Service Worker for PromptStow.
 importScripts('migrations.js', 'history.js', 'storage.js');
 
-const Migrations = globalThis.PromptlyMigrations;
-const PromptHistory = globalThis.PromptlyHistory;
-const PromptStorage = globalThis.PromptlyStorage;
+const Migrations = globalThis.PromptStowMigrations;
+const PromptHistory = globalThis.PromptStowHistory;
+const PromptStorage = globalThis.PromptStowStorage;
 
 const DEFAULT_PROMPT = {
   id: 'default-hello-world',
   title: 'Hello World',
   summary: 'A simple test prompt to get you started',
-  text: 'Hello! This is a test prompt from Promptly. You can replace this with your own prompts.',
+  text: 'Hello! This is a test prompt from PromptStow. You can replace this with your own prompts.',
   color: '#3b82f6',
   tags: ['test', 'demo'],
   folderId: Migrations.ROOT_FOLDER_ID,
@@ -45,11 +45,11 @@ async function ensureContextMenu() {
     await chrome.contextMenus.removeAll();
     chrome.contextMenus.create({
       id: 'insert-prompt',
-      title: 'Insert first Promptly prompt',
+      title: 'Insert first PromptStow prompt',
       contexts: ['editable']
     });
   } catch (error) {
-    console.error('Promptly context menu setup failed:', error);
+    console.error('PromptStow context menu setup failed:', error);
   }
 }
 
@@ -72,7 +72,7 @@ async function hydrateSettingsFromSync() {
       await PromptStorage.mergeSettingsFromSync(syncSettings);
     }
   } catch (error) {
-    console.warn('Promptly settings sync hydration skipped:', error);
+    console.warn('PromptStow settings sync hydration skipped:', error);
   }
 }
 
@@ -94,7 +94,7 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
   }
 
   PromptStorage.mergeSettingsFromSync(changes[PromptStorage.SETTINGS_SYNC_KEY].newValue).catch((error) => {
-    console.warn('Promptly failed to merge synced settings:', error);
+    console.warn('PromptStow failed to merge synced settings:', error);
   });
 });
 
@@ -111,11 +111,11 @@ async function insertPromptIntoTab(tabId, promptText, promptTitle = '') {
   const [injectionResult] = await chrome.scripting.executeScript({
     target: { tabId },
     func: (text, title) => {
-      if (!window.PromptlyInjection || typeof window.PromptlyInjection.insertPrompt !== 'function') {
-        throw new Error('Promptly injection module is not available');
+      if (!window.PromptStowInjection || typeof window.PromptStowInjection.insertPrompt !== 'function') {
+        throw new Error('PromptStow injection module is not available');
       }
 
-      return window.PromptlyInjection.insertPrompt(text, { title });
+      return window.PromptStowInjection.insertPrompt(text, { title });
     },
     args: [promptText, promptTitle]
   });
@@ -440,7 +440,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
           sendResponse({ success: false, error: 'Unknown message type' });
       }
     } catch (error) {
-      console.error('Error handling Promptly message:', error);
+      console.error('Error handling PromptStow message:', error);
       sendResponse({ success: false, error: error.message });
     }
   })();

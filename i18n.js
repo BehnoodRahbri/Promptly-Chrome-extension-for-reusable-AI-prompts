@@ -2,7 +2,7 @@
 (function () {
   const dictionaries = {
     en: {
-      appName: 'Promptly',
+      appName: 'PromptStow',
       import: 'Import',
       export: 'Export',
       newPrompt: 'New',
@@ -50,7 +50,7 @@
       topPrompts: 'Top prompts'
     },
     fa: {
-      appName: 'Promptly',
+      appName: 'PromptStow',
       import: 'ورود',
       export: 'خروجی',
       newPrompt: 'جدید',
@@ -144,7 +144,7 @@
   };
 
   if (typeof globalThis !== 'undefined') {
-    globalThis.PromptlyI18n = api;
+    globalThis.PromptStowI18n = api;
   }
 
   if (typeof module !== 'undefined' && module.exports) {

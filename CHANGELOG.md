@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to Promptly will be documented in this file.
+All notable changes to PromptStow will be documented in this file.
 
 ## Unreleased
 

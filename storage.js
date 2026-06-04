@@ -1,19 +1,19 @@
 // Shared storage adapter for the MV3 worker.
 (function () {
   const STORAGE_KEY = 'promptSaverData';
-  const SETTINGS_SYNC_KEY = 'promptlySettingsSync';
+  const SETTINGS_SYNC_KEY = 'promptstowSettingsSync';
   let writeLock = Promise.resolve();
 
   function getMigrations() {
-    if (typeof globalThis !== 'undefined' && globalThis.PromptlyMigrations) {
-      return globalThis.PromptlyMigrations;
+    if (typeof globalThis !== 'undefined' && globalThis.PromptStowMigrations) {
+      return globalThis.PromptStowMigrations;
     }
 
     if (typeof require === 'function') {
       return require('./migrations.js');
     }
 
-    throw new Error('Promptly migrations module is not available');
+    throw new Error('PromptStow migrations module is not available');
   }
 
   function clone(value) {
@@ -132,7 +132,7 @@
   };
 
   if (typeof globalThis !== 'undefined') {
-    globalThis.PromptlyStorage = api;
+    globalThis.PromptStowStorage = api;
   }
 
   if (typeof module !== 'undefined' && module.exports) {

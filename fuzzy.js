@@ -96,7 +96,7 @@
   };
 
   if (typeof globalThis !== 'undefined') {
-    globalThis.PromptlyFuzzy = api;
+    globalThis.PromptStowFuzzy = api;
   }
 
   if (typeof module !== 'undefined' && module.exports) {
