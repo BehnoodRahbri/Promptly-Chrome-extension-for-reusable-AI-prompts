@@ -1,0 +1,71 @@
+{
+  "manifest_version": 3,
+  "name": "Promptly",
+  "version": "1.1.0",
+  "description": "Save and reuse AI prompts locally in your browser with ease",
+  
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "clipboardWrite",
+    "contextMenus"
+  ],
+  
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://chat.openai.com/*",
+    "https://claude.ai/*", 
+    "https://gemini.google.com/*",
+    "https://aistudio.google.com/*",
+    "https://grok.com/*",
+    "https://chat.deepseek.com/*"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Promptly"
+  },
+
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+P",
+        "mac": "Command+Shift+P"
+      }
+    }
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*",
+        "https://claude.ai/*",
+        "https://gemini.google.com/*", 
+        "https://aistudio.google.com/*",
+        "https://grok.com/*",
+        "https://chat.deepseek.com/*"
+      ],
+      "js": [
+        "content-injection.js",
+        "fuzzy.js",
+        "slash-parse.js",
+        "template.js",
+        "content.js",
+        "slash-trigger.js"
+      ]
+    }
+  ],
+
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png", 
+    "128": "icon128.png"
+  }
+}

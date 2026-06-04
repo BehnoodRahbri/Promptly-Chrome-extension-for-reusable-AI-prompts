@@ -1,0 +1,31 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="60" fill="#3B82F6"/>
+  <circle cx="64" cy="64" r="60" fill="url(#gradient)" opacity="0.2"/>
+  
+  <!-- Document/prompt icon -->
+  <rect x="32" y="28" width="56" height="72" rx="6" fill="white"/>
+  <rect x="32" y="28" width="56" height="72" rx="6" stroke="#E5E7EB" stroke-width="1"/>
+  
+  <!-- Text lines representing prompt content -->
+  <rect x="40" y="40" width="40" height="3" rx="1.5" fill="#3B82F6"/>
+  <rect x="40" y="48" width="32" height="3" rx="1.5" fill="#6B7280"/>
+  <rect x="40" y="56" width="36" height="3" rx="1.5" fill="#6B7280"/>
+  <rect x="40" y="64" width="28" height="3" rx="1.5" fill="#6B7280"/>
+  
+  <!-- AI/Magic sparkle effect -->
+  <circle cx="72" cy="76" r="2" fill="#F59E0B"/>
+  <circle cx="78" cy="82" r="1.5" fill="#F59E0B"/>
+  <circle cx="66" cy="84" r="1" fill="#F59E0B"/>
+  
+  <!-- Save/bookmark indicator -->
+  <path d="M75 72 L82 72 L82 88 L78.5 84.5 L75 88 Z" fill="#10B981"/>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60A5FA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>
